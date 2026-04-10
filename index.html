@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qxf2 — Campaign Plan 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0f;
+    --bg2: #141416;
+    --bg3: #1c1c1f;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #f0efe8;
+    --muted: #888680;
+    --accent: #4f8ef7;
+    --accent2: #2dd4a0;
+    --accent3: #f5a623;
+    --accent4: #e05a5a;
+    --pill-bg: rgba(79,142,247,0.12);
+    --pill-text: #7eb0ff;
+    --teal-bg: rgba(45,212,160,0.1);
+    --teal-text: #5dddb8;
+    --amber-bg: rgba(245,166,35,0.1);
+    --amber-text: #f5bf6a;
+    --red-bg: rgba(224,90,90,0.1);
+    --red-text: #f08080;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,13,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border2);
+    padding: 0 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px;
+  }
+  .nav-brand { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; }
+  .nav-brand span { color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 12px; color: var(--muted); text-decoration: none;
+    letter-spacing: 0.04em; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--accent2);
+    background: var(--teal-bg);
+    padding: 3px 10px; border-radius: 20px;
+    border: 0.5px solid rgba(45,212,160,0.2);
+  }
+
+  /* LAYOUT */
+  .page { max-width: 960px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+  /* HERO */
+  .hero { margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 0.5px solid var(--border); }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--accent); letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+  .hero h1 { font-size: 36px; font-weight: 300; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1rem; }
+  .hero h1 strong { font-weight: 600; color: var(--text); }
+  .hero-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .hero-meta-item { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); display: inline-block; }
+
+  /* SECTION HEADER */
+  .s-label {
+    font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500;
+    color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .s-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
+
+  /* CARDS */
+  .card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--border2); }
+  .card-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+  .card-body { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+  /* METRIC */
+  .metric {
+    background: var(--bg3); border-radius: 8px;
+    padding: 1rem 1.25rem;
+    border: 0.5px solid var(--border);
+  }
+  .metric-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+  .metric-val { font-size: 22px; font-weight: 500; color: var(--text); }
+
+  /* BADGES */
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tag {
+    font-size: 11px; font-weight: 500; padding: 3px 10px;
+    border-radius: 20px; letter-spacing: 0.02em;
+  }
+  .tag-blue { background: var(--pill-bg); color: var(--pill-text); border: 0.5px solid rgba(79,142,247,0.2); }
+  .tag-teal { background: var(--teal-bg); color: var(--teal-text); border: 0.5px solid rgba(45,212,160,0.2); }
+  .tag-amber { background: var(--amber-bg); color: var(--amber-text); border: 0.5px solid rgba(245,166,35,0.2); }
+
+  /* TIMELINE */
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-bottom: 2rem; position: relative; }
+  .timeline::before {
+    content: ''; position: absolute;
+    top: 28px; left: 5%; right: 5%;
+    height: 1px; background: var(--border2); z-index: 0;
+  }
+  .week {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .week-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--bg3); border: 1.5px solid var(--border2);
+    margin-bottom: 10px; transition: all 0.2s;
+    position: relative;
+  }
+  .week-dot.active {
+    background: var(--accent2);
+    border-color: var(--accent2);
+    box-shadow: 0 0 12px rgba(45,212,160,0.4);
+  }
+  .week-dot.accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(79,142,247,0.3);
+  }
+  .week-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 8px; }
+  .week-card {
+    background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: 8px; padding: 10px 12px;
+    width: 90%; text-align: left;
+  }
+  .week-title { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .week-items { list-style: none; padding: 0; }
+  .week-items li { font-size: 11px; color: var(--muted); line-height: 1.6; padding-left: 10px; position: relative; }
+  .week-items li::before { content: '—'; position: absolute; left: 0; color: var(--border2); }
+  .week-card.warm { border-color: rgba(45,212,160,0.25); }
+  .week-card.warm .week-title { color: var(--teal-text); }
+
+  /* NUMBERED LIST */
+  .num-list { list-style: none; padding: 0; counter-reset: steps; }
+  .num-list li {
+    counter-increment: steps;
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 13px; color: var(--muted); line-height: 1.6;
+    padding: 8px 0; border-bottom: 0.5px solid var(--border);
+  }
+  .num-list li:last-child { border-bottom: none; }
+  .num-list li::before {
+    content: counter(steps);
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--accent); min-width: 20px;
+    padding-top: 2px;
+  }
+
+  /* PRICING */
+  .price-highlight {
+    background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(45,212,160,0.08));
+    border: 0.5px solid rgba(79,142,247,0.2);
+    border-radius: 10px; padding: 1.5rem;
+    text-align: center; margin-bottom: 12px;
+  }
+  .price-main { font-size: 32px; font-weight: 300; color: var(--text); margin-bottom: 4px; }
+  .price-main span { font-weight: 600; }
+  .price-sub { font-size: 12px; color: var(--muted); }
+
+  section { margin-bottom: 3rem; }
+
+  /* FOOTER */
+  .footer { border-top: 0.5px solid var(--border); padding-top: 2rem; margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-left { font-size: 12px; color: var(--muted); }
+  .footer-right { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent2); }
+
+  @media (max-width: 640px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .timeline::before { display: none; }
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .hero h1 { font-size: 26px; }
+    .page { padding: 2rem 1rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand"><span>Qxf2</span> &nbsp;×&nbsp; Emporia</div>
+  <div class="nav-links">
+    <a href="#timeline">Timeline</a>
+    <a href="#icp1">SaaS ICP</a>
+    <a href="#icp2">PE ICP</a>
+    <a href="#outreach">Outreach</a>
+  </div>
+  <div class="nav-badge">Campaign Plan · April 2026</div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">New Campaign Strategy</div>
+    <h1>AI-assisted QA outreach<br><strong>for Qxf2 Services</strong></h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="dot"></span> 5 qualified meetings / month</div>
+      <div class="hero-meta-item"><span class="dot"></span> US East Coast + Canada</div>
+      <div class="hero-meta-item"><span class="dot"></span> Two ICP tracks running in parallel</div>
+      <div class="hero-meta-item"><span class="dot"></span> Hyper-personalized cold email</div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="s-label">Campaign rollout</div>
+
+    <div class="timeline">
+      <div class="week">
+        <div class="week-label">Week 1</div>
+        <div class="week-dot active"></div>
+        <div class="week-card warm">
+          <div class="week-title">Foundation + Warmup</div>
+          <ul class="week-items">
+            <li>Email account warmup (domain health)</li>
+            <li>List building — ICP 1 + ICP 2</li>
+            <li>Warm reactivation drafted (15–20 leads)</li>
+            <li>Personalization research begins</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-label">Week 2</div>
+        <div class="week-dot accent"></div>
+        <div class="week-card">
+          <div class="week-title">Launch</div>
+          <ul class="week-items">
+            <li>Warm reactivation sent</li>
+            <li>Cold outreach sequence live (ICP 1)</li>
+            <li>PE portfolio track launched (ICP 2)</li>
+            <li>First replies expected</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-label">Week 3–4</div>
+        <div class="week-dot"></div>
+        <div class="week-card">
+          <div class="week-title">Optimise + Follow-up</div>
+          <ul class="week-items">
+            <li>Follow-up sequences running</li>
+            <li>Reply handling + booking</li>
+            <li>Messaging refinement based on data</li>
+            <li>First meetings targeted</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week-label">Month 2+</div>
+        <div class="week-dot"></div>
+        <div class="week-card">
+          <div class="week-title">Scale to 5/month</div>
+          <ul class="week-items">
+            <li>Double down on what's converting</li>
+            <li>New list batches every 2 weeks</li>
+            <li>Guarantee active until 5 meetings hit</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="background: rgba(45,212,160,0.05); border-color: rgba(45,212,160,0.2);">
+      <div class="card-title" style="color: var(--teal-text);">Week 1 in detail — what's happening behind the scenes</div>
+      <div class="card-body">
+        While inboxes warm up, the full build is running in parallel: Lists are being pulled and verified for both ICPs, the Claude-powered personalization tool is being loaded with research signals (tech stack, funding, job posts, engineering blogs), and the 15–20 warm leads from the last campaign are being identified and queued for a reactivation email the moment sending conditions are healthy. Nothing is idle in week 1.
+      </div>
+    </div>
+  </section>
+
+  <!-- ICP 1 -->
+  <section id="icp1">
+    <div class="s-label">ICP 1 — Larger SaaS companies</div>
+
+    <div class="grid-3" style="margin-bottom:12px;">
+      <div class="metric"><div class="metric-label">Company size</div><div class="metric-val">350–1k</div></div>
+      <div class="metric"><div class="metric-label">Geography</div><div class="metric-val">US / CA East</div></div>
+      <div class="metric"><div class="metric-label">Stage</div><div class="metric-val">Series B+</div></div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:12px;">
+      <div class="card">
+        <div class="card-title">Firmographics</div>
+        <div class="tags">
+          <span class="tag tag-blue">B2B SaaS</span>
+          <span class="tag tag-blue">Web application</span>
+          <span class="tag tag-blue">Fintech</span>
+          <span class="tag tag-blue">Healthtech</span>
+          <span class="tag tag-blue">Edtech</span>
+          <span class="tag tag-blue">AI / ML platform</span>
+          <span class="tag tag-blue">DevTools</span>
+          <span class="tag tag-blue">Data platform</span>
+          <span class="tag tag-blue">Cloud platform</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Target titles (priority order)</div>
+        <ul class="num-list">
+          <li>VP Engineering / Head of Engineering</li>
+          <li>CTO (companies under 500)</li>
+          <li>Senior Engineering Manager</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-title">Trigger signals</div>
+      <div class="tags">
+        <span class="tag tag-teal">QA / SDET job posting open</span>
+        <span class="tag tag-teal">Recently raised Series B or C</span>
+        <span class="tag tag-teal">Engineering headcount spike</span>
+        <span class="tag tag-teal">Engineering blog about release velocity</span>
+        <span class="tag tag-teal">Tech debt mentions</span>
+        <span class="tag tag-teal">New product launch announced</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ICP 2 -->
+  <section id="icp2">
+    <div class="s-label">ICP 2 — PE portfolio companies (post-acquisition)</div>
+
+    <div class="grid-3" style="margin-bottom:12px;">
+      <div class="metric"><div class="metric-label">Acquisition window</div><div class="metric-val">0–24 mo</div></div>
+      <div class="metric"><div class="metric-label">Target</div><div class="metric-val">Portfolio co.</div></div>
+      <div class="metric"><div class="metric-label">Geo</div><div class="metric-val">US / CA East</div></div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:12px;">
+      <div class="card">
+        <div class="card-title">Target titles</div>
+        <ul class="num-list">
+          <li>CTO / VP Engineering (placed post-acquisition)</li>
+          <li>Head of Engineering inheriting legacy stack</li>
+          <li>Senior Engineering Manager</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">How we identify them</div>
+        <ul class="num-list">
+          <li>Apollo: private equity backed company filter</li>
+          <li>Crunchbase: SaaS acquisitions in last 24 months</li>
+          <li>LinkedIn: engineering leaders hired post-acquisition</li>
+          <li>News signals: PE acquisition press releases</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Trigger signals</div>
+      <div class="tags">
+        <span class="tag tag-amber">Acquired in last 24 months</span>
+        <span class="tag tag-amber">New CTO or VP Eng hired post-acquisition</span>
+        <span class="tag tag-amber">Legacy SaaS product</span>
+        <span class="tag tag-amber">PE board driving modernization</span>
+        <span class="tag tag-amber">Engineering hiring spike post-acquisition</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- OUTREACH -->
+  <section id="outreach">
+    <div class="s-label">Outreach method</div>
+
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-title">Hyper-personalization engine</div>
+      <div class="card-body">Every email is researched and written individually using a Claude-powered internal tool. It pulls each prospect's tech stack, recent funding, team size, open job postings, and engineering signals before writing. No two emails look the same — no templates visible to the reader.</div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Cold sequence structure</div>
+        <ul class="num-list">
+          <li><strong style="color:var(--text)">Day 1</strong> — Hyper-personalized opener</li>
+          <li><strong style="color:var(--text)">Day 4</strong> — Value add (insight or data point)</li>
+          <li><strong style="color:var(--text)">Day 9</strong> — Short follow-up</li>
+          <li><strong style="color:var(--text)">Day 14</strong> — Breakup email</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color: rgba(45,212,160,0.2);">
+        <div class="card-title" style="color: var(--teal-text);">Warm reactivation (Week 1)</div>
+        <ul class="num-list">
+          <li>Re-engage 15–20 warm leads from previous outreach</li>
+          <li>Updated angle — AI-assisted QA, larger company focus</li>
+          <li>Single follow-up if no reply within 5 days</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section>
+    <div class="s-label">FAQs</div>
+
+    <div class="card" style="margin-bottom:10px;">
+      <div class="card-title">How will you make sure the emails don't sound generic?</div>
+      <div class="card-body" style="margin-top:6px;">Each email is built from live research on the prospect — their tech stack, recent hires, job postings, and engineering activity. The Claude-powered tool writes a unique email for each person. We review every batch before sending. Nothing goes out templated.</div>
+    </div>
+
+    <div class="card" style="margin-bottom:10px;">
+      <div class="card-title">How do you qualify a meeting before counting it?</div>
+      <div class="card-body" style="margin-top:6px;">A qualified meeting is with a decision-maker (CTO, VP Eng, Head of Engineering) at a company that matches the ICP, where there is an expressed interest in exploring QA support. Replies that are just curiosity or the wrong title don't count toward the target.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">What happens if the monthly target isn't hit?</div>
+      <div class="card-body" style="margin-top:6px;">Emporia continues working past the initial term at no additional cost until 5 qualified meetings per month is achieved. The target is the deliverable — not just the activity.</div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="footer-left">Prepared by Emporia &nbsp;·&nbsp; April 2026</div>
+    <div class="footer-right">Target: 5 meetings/month</div>
+  </div>
+
+</div>
+</body>
+</html>
